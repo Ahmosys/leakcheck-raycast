@@ -82,10 +82,8 @@ export default function LookupCommand() {
             title={breach.source.name}
             subtitle={`Breach date: ${breach.source.breach_date || "N/A"}`}
             icon={{
-              source: breach.password
-                ? Icon.LockUnlocked // Icône pour mot de passe trouvé
-                : Icon.Lock, // Icône pour mot de passe non trouvé
-              tintColor: breach.source.unverified ? Color.Red : Color.Green, // Couleurs dynamiques
+              source: breach.password ? Icon.LockUnlocked : Icon.Lock,
+              tintColor: breach.source.unverified ? Color.Red : Color.Green,
             }}
             accessories={[
               {
