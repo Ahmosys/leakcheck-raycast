@@ -1,10 +1,12 @@
 # Leakcheck - Raycast Extension
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+**Leakcheck** is a Raycast extension that allows you to query the LeakCheck API to search for data breaches associated with email addresses.
+
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/ahmosys/leakcheck-raycast) ![GitHub issues](https://img.shields.io/github/issues/ahmosys/leakcheck-raycast)
+
 
 ![Leakcheck](https://cdn.discordapp.com/attachments/753686165311193099/1309617387452235858/CleanShot_2024-11-22_at_21.31.02.png?ex=67423bbc&is=6740ea3c&hm=adb1ed0d0251c90d1a99095fde2ba1be09e96516aeb57052ab83ef153bd9215f&)
 
-**Leakcheck** is a Raycast extension that allows you to query the LeakCheck API to search for data breaches associated with email addresses.
 
 ## 📋 Description
 
