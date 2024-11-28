@@ -1,5 +1,16 @@
 import { useState, useMemo } from "react";
-import { List, Detail, Action, ActionPanel, showToast, Icon, Toast, Color, getPreferenceValues } from "@raycast/api";
+import {
+  List,
+  Detail,
+  Action,
+  ActionPanel,
+  showToast,
+  Icon,
+  Toast,
+  Color,
+  getPreferenceValues,
+  LaunchProps,
+} from "@raycast/api";
 import { useFetch } from "@raycast/utils";
 
 interface Preferences {
@@ -28,7 +39,7 @@ interface ApiResponse {
   result: BreachResult[];
 }
 
-export default function LookupCommand(props: { arguments: { email: string } }) {
+export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.LookupDataBreach }>) {
   const preferences = getPreferenceValues<Preferences>();
   const { email } = props.arguments;
   const [filter, setFilter] = useState<string>("all");
@@ -65,8 +76,8 @@ export default function LookupCommand(props: { arguments: { email: string } }) {
   const filteredResults = useMemo(() => {
     return (
       data?.result.filter((breach) => {
-        if (filter === "verified") return !breach.source.unverified;
-        if (filter === "unverified") return breach.source.unverified;
+        if (filter === "password") return !!breach.password;
+        if (filter === "nopassword") return !breach.password;
         return true;
       }) || []
     );
@@ -78,10 +89,10 @@ export default function LookupCommand(props: { arguments: { email: string } }) {
       searchBarPlaceholder="Enter any keyword to filter results"
       searchBarAccessory={
         <List.Dropdown tooltip="Filter Results" storeValue defaultValue="all" onChange={setFilter}>
-          <List.Dropdown.Section title="Verification Status">
+          <List.Dropdown.Section title="Password Status">
             <List.Dropdown.Item title="All" value="all" />
-            <List.Dropdown.Item title="Verified" value="verified" />
-            <List.Dropdown.Item title="Unverified" value="unverified" />
+            <List.Dropdown.Item title="Password Found" value="password" />
+            <List.Dropdown.Item title="No Password" value="nopassword" />
           </List.Dropdown.Section>
         </List.Dropdown>
       }
@@ -95,7 +106,7 @@ export default function LookupCommand(props: { arguments: { email: string } }) {
               subtitle={`Breach date: ${breach.source.breach_date || "N/A"}`}
               icon={{
                 source: breach.password ? Icon.LockUnlocked : Icon.Lock,
-                tintColor: breach.source.unverified ? Color.Red : Color.Green,
+                tintColor: breach.password ? Color.Green : Color.Red,
               }}
               accessories={[
                 {
@@ -157,8 +168,11 @@ function BreachDetail({ breach }: { breach: BreachResult }) {
 `}
       metadata={
         <Detail.Metadata>
-          <Detail.Metadata.Label title="Verification" text={breach.source.unverified ? "Unverified" : "Verified"} />
-          <Detail.Metadata.Label title="Compilation" text={breach.source.compilation ? "Yes" : "No"} />
+          <Detail.Metadata.Label
+            title="Verification Status"
+            text={breach.source.unverified ? "Unverified" : "Verified"}
+          />
+          <Detail.Metadata.Label title="Provide from compilation" text={breach.source.compilation ? "Yes" : "No"} />
         </Detail.Metadata>
       }
     />

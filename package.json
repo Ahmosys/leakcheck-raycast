@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "leakcheck",
   "title": "Leakcheck",
-  "description": "Query LeakCheck API for searching data breaches associated with e-mail.",
+  "description": "Query LeakCheck API for searching data breaches.",
   "icon": "extension-icon.jpg",
   "author": "ahmosys",
   "categories": [
@@ -21,7 +21,8 @@
         {
           "name": "email",
           "type": "text",
-          "placeholder": "Enter email to lookup"
+          "placeholder": "Enter email to lookup",
+          "required": true
         }
       ],
       "preferences": [
