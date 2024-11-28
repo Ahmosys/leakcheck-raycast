@@ -12,6 +12,9 @@ import {
   LaunchProps,
 } from "@raycast/api";
 import { useFetch } from "@raycast/utils";
+import * as XLSX from "xlsx";
+import os from "os";
+import path from "path";
 
 interface Preferences {
   apiKey: string;
@@ -39,7 +42,7 @@ interface ApiResponse {
   result: BreachResult[];
 }
 
-export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.LookupDataBreach }>) {
+export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.LookupCommand }>) {
   const preferences = getPreferenceValues<Preferences>();
   const { email } = props.arguments;
   const [filter, setFilter] = useState<string>("all");
@@ -48,7 +51,7 @@ export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.
     showToast({
       style: Toast.Style.Failure,
       title: "API Key Missing",
-      message: "Please add your API key in preferences.",
+      message: "Please add your API key in preferences",
     });
     return null;
   }
@@ -61,18 +64,6 @@ export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.
     },
   );
 
-  if (error) {
-    return (
-      <List>
-        <List.EmptyView
-          icon={Icon.ExclamationMark}
-          title="Error Fetching Data"
-          description={error.message || "An unknown error occurred"}
-        />
-      </List>
-    );
-  }
-
   const filteredResults = useMemo(() => {
     return (
       data?.result.filter((breach) => {
@@ -82,6 +73,62 @@ export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.
       }) || []
     );
   }, [data, filter]);
+
+  async function exportToExcel(data: BreachResult[]) {
+    try {
+      if (!Array.isArray(data) || data.length === 0) {
+        await showToast({
+          style: Toast.Style.Failure,
+          title: "No Data to Export",
+          message: "There are no breaches to export.",
+        });
+        return;
+      }
+
+      // Format breaches into rows for Excel
+      const rows = data.map((breach) => ({
+        Email: breach.email,
+        Source: breach.source.name,
+        "Breach Date": breach.source.breach_date || "N/A",
+        Password: breach.password || "N/A",
+        Verified: breach.source.unverified ? "No" : "Yes",
+        Fields: breach.fields.join(", ") || "None",
+      }));
+
+      // Create worksheet and workbook
+      const worksheet = XLSX.utils.json_to_sheet(rows);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Breaches");
+
+      // Save the file to desktop
+      const desktopPath = path.join(os.homedir(), "Desktop", "breaches.xlsx");
+      XLSX.writeFile(workbook, desktopPath);
+
+      await showToast({
+        style: Toast.Style.Success,
+        title: "Export Successful",
+        message: `File saved to your desktop.`,
+      });
+    } catch (err) {
+      await showToast({
+        style: Toast.Style.Failure,
+        title: "Export Failed",
+        message: err instanceof Error ? err.message : "An unknown error occurred.",
+      });
+    }
+  }
+
+  if (error) {
+    return (
+      <List>
+        <List.EmptyView
+          icon={Icon.ExclamationMark}
+          title="Error Fetching Data"
+          description={error.message || "An unknown error occurred."}
+        />
+      </List>
+    );
+  }
 
   return (
     <List
@@ -138,6 +185,12 @@ export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.
                       shortcut={{ modifiers: ["cmd"], key: "c" }}
                     />
                   )}
+                  <Action
+                    title="Export All to Excel"
+                    icon={Icon.Download}
+                    onAction={() => exportToExcel(data?.result || [])}
+                    shortcut={{ modifiers: ["cmd"], key: "e" }}
+                  />
                 </ActionPanel>
               }
             />
@@ -168,11 +221,8 @@ function BreachDetail({ breach }: { breach: BreachResult }) {
 `}
       metadata={
         <Detail.Metadata>
-          <Detail.Metadata.Label
-            title="Verification Status"
-            text={breach.source.unverified ? "Unverified" : "Verified"}
-          />
-          <Detail.Metadata.Label title="Provide from compilation" text={breach.source.compilation ? "Yes" : "No"} />
+          <Detail.Metadata.Label title="Verification" text={breach.source.unverified ? "Unverified" : "Verified"} />
+          <Detail.Metadata.Label title="Compilation" text={breach.source.compilation ? "Yes" : "No"} />
         </Detail.Metadata>
       }
     />

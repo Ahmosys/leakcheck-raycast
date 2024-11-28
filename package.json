@@ -12,7 +12,7 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "lookup-data-breach",
+      "name": "lookupCommand",
       "title": "Lookup Data Breach",
       "subtitle": "Leakcheck",
       "description": "Query data breaches for a given email.",
@@ -39,7 +39,8 @@
   ],
   "dependencies": {
     "@raycast/api": "^1.85.2",
-    "@raycast/utils": "^1.17.0"
+    "@raycast/utils": "^1.17.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.11",
