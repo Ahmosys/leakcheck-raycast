@@ -28,9 +28,9 @@ interface ApiResponse {
   result: BreachResult[];
 }
 
-export default function LookupCommand() {
+export default function LookupCommand(props: { arguments: { email: string } }) {
   const preferences = getPreferenceValues<Preferences>();
-  const [email, setEmail] = useState<string>("");
+  const { email } = props.arguments;
   const [filter, setFilter] = useState<string>("all");
 
   const { isLoading, data, error } = useFetch<ApiResponse>(
@@ -40,7 +40,6 @@ export default function LookupCommand() {
         "X-API-Key": preferences.apiKey,
       },
       execute: !!email,
-      keepPreviousData: true,
     },
   );
 
@@ -62,11 +61,9 @@ export default function LookupCommand() {
   return (
     <List
       isLoading={isLoading}
-      searchBarPlaceholder="Enter email to lookup"
-      onSearchTextChange={setEmail}
-      throttle
+      searchBarPlaceholder="Enter any keyword to search for data breaches"
       searchBarAccessory={
-        <List.Dropdown tooltip="Filter Results" storeValue onChange={(value) => setFilter(value)}>
+        <List.Dropdown tooltip="Filter Results" storeValue onChange={setFilter}>
           <List.Dropdown.Section title="Verification Status">
             <List.Dropdown.Item title="All" value="all" />
             <List.Dropdown.Item title="Verified" value="verified" />

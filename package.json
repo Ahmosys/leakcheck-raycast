@@ -17,6 +17,13 @@
       "subtitle": "Leakcheck",
       "description": "Query data breaches for a given email.",
       "mode": "view",
+      "arguments": [
+        {
+          "name": "email",
+          "type": "text",
+          "placeholder": "Enter email to lookup"
+        }
+      ],
       "preferences": [
         {
           "name": "apiKey",
