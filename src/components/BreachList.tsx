@@ -15,11 +15,16 @@ export default function BreachList({
   setFilter: (filter: string) => void;
 }) {
   const filteredResults =
-    data?.result.filter((breach) => {
-      if (filter === "password") return !!breach.password;
-      if (filter === "nopassword") return !breach.password;
-      return true;
-    }) || [];
+    data?.result
+      .filter((breach) => {
+        if (filter === "password") return !!breach.password;
+        if (filter === "nopassword") return !breach.password;
+        return true;
+      })
+      .sort((a, b) => {
+        // Sort by password presence: Password found first
+        return (b.password ? 1 : 0) - (a.password ? 1 : 0);
+      }) || [];
 
   const totalResults = filteredResults.length;
 
