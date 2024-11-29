@@ -21,6 +21,8 @@ export default function BreachList({
       return true;
     }) || [];
 
+  const totalResults = filteredResults.length;
+
   return (
     <List
       isLoading={isLoading}
@@ -36,7 +38,10 @@ export default function BreachList({
       }
     >
       {data && (
-        <List.Section title={`Quota: ${data?.quota || "N/A"} Requests Remaining`}>
+        <List.Section
+          title={`Found: ${totalResults} Breach${totalResults !== 1 ? "es" : ""}`}
+          subtitle={`Quota: ${data.quota || "N/A"} Requests Remaining`}
+        >
           {filteredResults.map((breach, index) => (
             <List.Item
               key={index}
@@ -46,6 +51,21 @@ export default function BreachList({
                 source: breach.password ? Icon.LockUnlocked : Icon.Lock,
                 tintColor: breach.password ? Color.Green : Color.Red,
               }}
+              accessories={[
+                {
+                  text: `Password: ${breach.password ? "Found" : "Not Found"}`,
+                  icon: breach.password
+                    ? { source: Icon.ExclamationMark, tintColor: Color.Red }
+                    : { source: Icon.CheckCircle, tintColor: Color.Green },
+                },
+                {
+                  text: breach.source.unverified ? "Unverified" : "Verified",
+                  icon: {
+                    source: Icon.Shield,
+                    tintColor: breach.source.unverified ? Color.Yellow : Color.Green,
+                  },
+                },
+              ]}
               actions={
                 <ActionPanel>
                   <Action.Push
@@ -73,7 +93,7 @@ export default function BreachList({
           ))}
         </List.Section>
       )}
-      {!isLoading && filteredResults.length === 0 && (
+      {!isLoading && totalResults === 0 && (
         <List.EmptyView
           icon={Icon.MagnifyingGlass}
           title="No breaches found"
