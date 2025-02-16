@@ -102,7 +102,7 @@ export default function BreachList({
         <List.EmptyView
           icon={Icon.MagnifyingGlass}
           title="No breaches found"
-          description="Try a different email or adjust the filter."
+          description="Try a different email / username or adjust the filter."
         />
       )}
     </List>

@@ -3,7 +3,7 @@
   "name": "leakcheck",
   "title": "Leakcheck",
   "description": "Query LeakCheck API for searching data breaches.",
-  "icon": "extension-icon.png",
+  "icon": "extension_icon.png",
   "author": "ahmosys",
   "categories": [
     "Security",
@@ -14,14 +14,14 @@
     {
       "name": "lookupCommand",
       "title": "Lookup Data Breach",
-      "subtitle": "Leakcheck",
+      "subtitle": "Leakcheck API",
       "description": "Query data breaches for a given email or username.",
       "mode": "view",
       "arguments": [
         {
           "name": "email",
           "type": "text",
-          "placeholder": "Enter email to lookup",
+          "placeholder": "Enter email or username",
           "required": true
         }
       ],
