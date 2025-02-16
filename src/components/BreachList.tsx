@@ -81,7 +81,7 @@ export default function BreachList({
                   />
                   {breach.password && (
                     <Action.CopyToClipboard
-                      title="Copy Password"
+                      title="Copy Password to Clipboard"
                       content={breach.password}
                       shortcut={{ modifiers: ["cmd"], key: "c" }}
                     />
