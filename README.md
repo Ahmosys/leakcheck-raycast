@@ -41,7 +41,7 @@ Before using the extension, configure your LeakCheck API key:
 ## 📖 Usage
 
 1. Open Raycast and search for **Lookup Data Breach**.
-2. Enter an email address into the provided field.
+2. Enter an email address or username into the provided field.
 3. The extension will query the LeakCheck API and return any data breach results, if available.
 
 ## 🧩 Dependencies
