@@ -5,7 +5,7 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/ahmosys/leakcheck-raycast) ![GitHub issues](https://img.shields.io/github/issues/ahmosys/leakcheck-raycast)
 
 
-![Leakcheck](https://cdn.discordapp.com/attachments/753686165311193099/1309617387452235858/CleanShot_2024-11-22_at_21.31.02.png?ex=67423bbc&is=6740ea3c&hm=adb1ed0d0251c90d1a99095fde2ba1be09e96516aeb57052ab83ef153bd9215f&)
+![Leakcheck](https://cdn.discordapp.com/attachments/945032173654769714/1340619716166684693/CleanShot_2025-02-16_at_10.43.53.png?ex=67b304e7&is=67b1b367&hm=551840aa183e0efc3d1129505700fad1a334c862756cf7d76dda6489ebee4943&)
 
 
 ## 📋 Description
