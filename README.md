@@ -1,6 +1,6 @@
 # Leakcheck - Raycast Extension
 
-**Leakcheck** is a Raycast extension that allows you to query the LeakCheck API to search for data breaches associated with email addresses.
+**Leakcheck** is a Raycast extension that allows you to query the [Leakcheck API](https://wiki.leakcheck.io/en/api) to search for data breaches associated with email addresses.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/ahmosys/leakcheck-raycast) ![GitHub issues](https://img.shields.io/github/issues/ahmosys/leakcheck-raycast)
 
@@ -10,7 +10,7 @@
 
 ## 📋 Description
 
-Leakcheck provides a fast and efficient way to check if an email address has been involved in data breaches. This extension is perfect for security professionals and users concerned about the privacy of their information.
+Leakcheck provides a fast and efficient way to check if an email address / username has been involved in data breaches. This extension is perfect for security professionals and users concerned about the privacy of their information.
 
 ## 🚀 Features
 
