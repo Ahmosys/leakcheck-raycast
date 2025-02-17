@@ -34,9 +34,9 @@ export default function BreachList({
       searchBarAccessory={
         <List.Dropdown tooltip="Filter Results" storeValue defaultValue="all" onChange={setFilter}>
           <List.Dropdown.Section title="Password Status">
-            <List.Dropdown.Item title="All" value="all" />
-            <List.Dropdown.Item title="Password Found" value="password" />
-            <List.Dropdown.Item title="No Password" value="nopassword" />
+            <List.Dropdown.Item title="All Results" value="all" icon={Icon.List} />
+            <List.Dropdown.Item title="Password Found" value="password" icon={Icon.Eye} />
+            <List.Dropdown.Item title="No Password" value="nopassword" icon={Icon.EyeDisabled} />
           </List.Dropdown.Section>
         </List.Dropdown>
       }
@@ -52,20 +52,20 @@ export default function BreachList({
               title={breach.source.name}
               subtitle={`Breach date: ${breach.source.breach_date || "N/A"}`}
               icon={{
-                source: breach.password ? Icon.LockUnlocked : Icon.Lock,
-                tintColor: breach.password ? Color.Green : Color.Red,
+                source: breach.password ? Icon.Eye : Icon.EyeDisabled,
+                tintColor: breach.password ? Color.Orange : Color.SecondaryText,
               }}
               accessories={[
                 {
-                  text: `Password: ${breach.password ? "Found" : "Not Found"}`,
-                  icon: breach.password
-                    ? { source: Icon.ExclamationMark, tintColor: Color.Red }
-                    : { source: Icon.CheckCircle, tintColor: Color.Green },
+                  text: breach.password ? "Password Exposed" : "Password Safe",
+                  icon: breach.password 
+                    ? { source: Icon.ExclamationMark, tintColor: Color.Orange }
+                    : { source: Icon.Checkmark, tintColor: Color.Green },
                 },
                 {
-                  text: breach.source.unverified ? "Unverified" : "Verified",
+                  text: breach.source.unverified ? "Unverified Source" : "Verified Source",
                   icon: {
-                    source: Icon.Shield,
+                    source: breach.source.unverified ? Icon.QuestionMark : Icon.Checkmark,
                     tintColor: breach.source.unverified ? Color.Yellow : Color.Green,
                   },
                 },
@@ -73,20 +73,21 @@ export default function BreachList({
               actions={
                 <ActionPanel>
                   <Action.Push
-                    title="View Details"
-                    icon={Icon.Document}
+                    title="View Breach Details"
+                    icon={Icon.Sidebar}
                     target={<BreachDetail breach={breach} />}
                     shortcut={{ modifiers: ["cmd"], key: "d" }}
                   />
                   {breach.password && (
                     <Action.CopyToClipboard
-                      title="Copy Password to Clipboard"
+                      title="Copy Exposed Password"
+                      icon={Icon.Clipboard}
                       content={breach.password}
                       shortcut={{ modifiers: ["cmd"], key: "c" }}
                     />
                   )}
                   <Action
-                    title="Export All to Excel"
+                    title="Export Results to Excel"
                     icon={Icon.Download}
                     onAction={() => exportToExcel(data?.result || [])}
                     shortcut={{ modifiers: ["cmd"], key: "e" }}
@@ -99,8 +100,8 @@ export default function BreachList({
       )}
       {!isLoading && totalResults === 0 && (
         <List.EmptyView
-          icon={Icon.MagnifyingGlass}
-          title="No breaches found"
+          icon={Icon.Shield}
+          title="No Data Breaches Found"
           description="Try a different email / username or adjust the filter."
         />
       )}
