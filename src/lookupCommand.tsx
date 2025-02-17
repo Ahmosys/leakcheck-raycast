@@ -1,32 +1,53 @@
 import { useState } from "react";
-import { showToast, Toast, getPreferenceValues, List, Icon, LaunchProps } from "@raycast/api";
+import { List, Icon, LaunchProps } from "@raycast/api";
 import { useFetchBreaches } from "./hooks/useFetchBreaches";
+import { handleError } from "./utils/errors";
+import { validateQuery } from "./utils/validation";
 import BreachList from "./components/BreachList";
 import { Preferences } from "./types/breach";
+import { getPreferenceValues } from "@raycast/api";
+import { ERROR_MESSAGES } from "./constants/errorMessages";
 
 export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.LookupCommand }>) {
   const preferences = getPreferenceValues<Preferences>();
-  const { email } = props.arguments;
+  const { query } = props.arguments;
   const [filter, setFilter] = useState<string>("all");
 
-  if (!preferences.apiKey) {
-    showToast({
-      style: Toast.Style.Failure,
-      title: "API Key Missing",
-      message: "Please add your API key in preferences.",
-    });
-    return null;
+  try {
+    validateQuery(query);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      handleError(error);
+      return (
+        <List>
+          <List.EmptyView
+            icon={Icon.ExclamationMark}
+            title={ERROR_MESSAGES.UI.INVALID_INPUT}
+            description={error.message}
+          />
+        </List>
+      );
+    }
+    return (
+      <List>
+        <List.EmptyView
+          icon={Icon.ExclamationMark}
+          title={ERROR_MESSAGES.UI.INVALID_INPUT}
+          description={ERROR_MESSAGES.UI.UNEXPECTED_ERROR}
+        />
+      </List>
+    );
   }
 
-  const { isLoading, data, error } = useFetchBreaches(email, preferences.apiKey);
+  const { isLoading, data, error } = useFetchBreaches(query, preferences.apiKey);
 
   if (error) {
     return (
       <List>
         <List.EmptyView
           icon={Icon.ExclamationMark}
-          title="Error Fetching Data"
-          description={error.message || "An unknown error occurred."}
+          title={ERROR_MESSAGES.UI.ERROR_TITLE}
+          description={error.message || ERROR_MESSAGES.UI.UNEXPECTED_ERROR}
         />
       </List>
     );

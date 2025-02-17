@@ -1,6 +1,6 @@
-import { List, Icon, Color, ActionPanel, Action } from "@raycast/api";
-import { ApiResponse } from "../types/breach";
+import { Action, ActionPanel, Color, Icon, List } from "@raycast/api";
 import BreachDetail from "./BreachDetails";
+import { ApiResponse } from "../types/breach";
 import { exportToExcel } from "../utils/exportToExcel";
 
 export default function BreachList({
@@ -22,7 +22,6 @@ export default function BreachList({
         return true;
       })
       .sort((a, b) => {
-        // Sort by password presence: Password found first
         return (b.password ? 1 : 0) - (a.password ? 1 : 0);
       }) || [];
 

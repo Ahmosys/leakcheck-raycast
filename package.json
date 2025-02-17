@@ -19,7 +19,7 @@
       "mode": "view",
       "arguments": [
         {
-          "name": "email",
+          "name": "query",
           "type": "text",
           "placeholder": "Enter email or username",
           "required": true
