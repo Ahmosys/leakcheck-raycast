@@ -1,7 +1,7 @@
 import * as XLSX from "xlsx";
 import os from "os";
 import path from "path";
-import { BreachResult } from "../types/breach";
+import { BreachResult } from "@/types/breach";
 import { showToast, Toast } from "@raycast/api";
 
 /**

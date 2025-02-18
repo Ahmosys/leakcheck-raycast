@@ -1,8 +1,8 @@
 import { Action, ActionPanel, Color, Icon, List } from "@raycast/api";
-import BreachDetail from "./BreachDetails";
-import { ApiResponse } from "../types/breach";
-import { exportToExcel } from "../utils/exportUtils";
-import { BreachStats } from "./BreachStats";
+import BreachDetail from "@/components/BreachDetails";
+import { ApiResponse } from "@/types/breach";
+import { exportToExcel } from "@/utils/export";
+import { BreachStats } from "@/components/BreachStats";
 
 export default function BreachList({
   isLoading,

@@ -1,5 +1,5 @@
 import { Icon } from "@raycast/api";
-import { BreachStats, RiskLevel } from "../types/breach";
+import { BreachStats, RiskLevel } from "@/types/breach";
 
 /**
  * Calculates the risk level based on breach statistics

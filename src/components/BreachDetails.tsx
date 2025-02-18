@@ -1,5 +1,5 @@
 import { Action, ActionPanel, Color, Detail, Icon } from "@raycast/api";
-import { BreachResult } from "../types/breach";
+import { BreachResult } from "@/types/breach";
 
 export default function BreachDetail({ breach }: { breach: BreachResult }) {
   return (

@@ -1,5 +1,5 @@
 import { Toast, showToast } from "@raycast/api";
-import { ERROR_MESSAGES } from "../constants/errorMessages";
+import { ERROR_MESSAGES } from "@/constants/errorMessages";
 
 /**
  * Custom error class for API-related errors

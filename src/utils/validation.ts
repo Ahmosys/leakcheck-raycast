@@ -1,5 +1,5 @@
-import { ValidationError } from "./errosUtils";
-import { ERROR_MESSAGES } from "../constants/errorMessages";
+import { ValidationError } from "@/utils/error";
+import { ERROR_MESSAGES } from "@/constants/errorMessages";
 
 /**
  * Validates a search query string for email or username format

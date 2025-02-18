@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { List, Icon, LaunchProps } from "@raycast/api";
-import { useFetchBreaches } from "./hooks/useFetchBreaches";
-import { handleError } from "./utils/errosUtils";
-import { validateQuery } from "./utils/validationUtils";
-import BreachList from "./components/BreachList";
-import { Preferences } from "./types/breach";
 import { getPreferenceValues } from "@raycast/api";
-import { ERROR_MESSAGES } from "./constants/errorMessages";
+import BreachList from "@/components/BreachList";
+import { useFetchBreaches } from "@/hooks/useFetchBreaches";
+import { handleError } from "@/utils/error";
+import { validateQuery } from "@/utils/validation";
+import { Preferences } from "@/types/breach";
+import { ERROR_MESSAGES } from "@/constants/errorMessages";
 
 export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.LookupCommand }>) {
   const preferences = getPreferenceValues<Preferences>();

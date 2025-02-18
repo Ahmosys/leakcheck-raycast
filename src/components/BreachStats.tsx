@@ -1,14 +1,14 @@
 import { Detail, Icon, Color } from "@raycast/api";
-import { BreachResult } from "../types/breach";
-import type { BreachStats } from "../types/breach";
-import { useBreachStats } from "../hooks/useBreachStats";
+import { BreachResult } from "@/types/breach";
+import type { BreachStats } from "@/types/breach";
+import { useBreachStats } from "@/hooks/useBreachStats";
 import {
   generateTimelineChart,
   generateDataTypesChart,
   getRiskIcon,
   generateRiskAssessment,
   generateRecommendations,
-} from "../utils/statsUtils";
+} from "../utils/stats";
 
 export function BreachStats({ breaches }: { breaches: BreachResult[] }) {
   const stats = useBreachStats(breaches);

@@ -1,4 +1,11 @@
 {
   "root": true,
-  "extends": ["@raycast"]
+  "extends": ["@raycast"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  }
 }

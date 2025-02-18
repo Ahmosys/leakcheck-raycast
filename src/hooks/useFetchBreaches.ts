@@ -1,7 +1,7 @@
 import { useFetch } from "@raycast/utils";
-import { ApiResponse } from "../types/breach";
-import { APIError, handleError } from "../utils/errosUtils";
-import { ERROR_MESSAGES } from "../constants/errorMessages";
+import { ApiResponse } from "@/types/breach";
+import { APIError, handleError } from "@/utils/error";
+import { ERROR_MESSAGES } from "@/constants/errorMessages";
 
 /**
  * Custom hook to fetch data breaches for a given email address

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { BreachResult, BreachStats, RiskLevel } from "../types/breach";
-import { calculateRiskLevel } from "../utils/statsUtils";
+import { BreachResult, BreachStats, RiskLevel } from "@/types/breach";
+import { calculateRiskLevel } from "@/utils/stats";
 
 /**
  * Custom hook that analyzes breach data and computes various statistics
