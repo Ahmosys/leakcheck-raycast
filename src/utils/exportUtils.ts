@@ -13,7 +13,7 @@ import { showToast, Toast } from "@raycast/api";
  * - Password: Exposed password (if available)
  * - Verified: Whether the breach source is verified
  * - Fields: List of compromised data types
- * 
+ *
  * @param data - Array of breach results to export
  * @throws Will show error toast if export fails
  * @returns {Promise<void>} Resolves when export is complete

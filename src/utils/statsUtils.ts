@@ -7,7 +7,7 @@ import { BreachStats, RiskLevel } from "../types/breach";
  * - Password exposure: 30 points per breach
  * - Verified sources: 10 points per source
  * - Compromised data types: 5 points per type
- * 
+ *
  * @param stats - Breach statistics object containing exposure metrics
  * @returns {RiskLevel} Calculated risk level (HIGH, MEDIUM, or LOW)
  */
@@ -24,7 +24,7 @@ export function calculateRiskLevel(stats: BreachStats): RiskLevel {
 /**
  * Generates a text-based timeline chart of breaches by year
  * Uses Unicode block characters to create a visual bar chart
- * 
+ *
  * @param timelineData - Map of years to number of breaches
  * @returns {string} Formatted string containing the timeline visualization
  */
@@ -44,7 +44,7 @@ export function generateTimelineChart(timelineData: Map<string, number>): string
 /**
  * Generates a bar chart of the top 5 most compromised data types
  * Uses Unicode block characters to create a visual representation
- * 
+ *
  * @param dataTypes - Map of data types to their frequency of occurrence
  * @returns {string} Formatted string containing the data types visualization
  */
@@ -66,7 +66,7 @@ export function generateDataTypesChart(dataTypes: Map<string, number>): string {
 /**
  * Determines the appropriate icon to display based on breach statistics
  * Shows warning icon if passwords were exposed, checkmark otherwise
- * 
+ *
  * @param stats - Breach statistics object
  * @returns {Icon} Icon.ExclamationMark for password exposure, Icon.Checkmark otherwise
  */
@@ -77,7 +77,7 @@ export function getRiskIcon(stats: BreachStats): Icon {
 /**
  * Generates a risk assessment summary based on breach statistics
  * Includes critical warnings and potential security concerns
- * 
+ *
  * @param stats - Breach statistics object
  * @returns {string} Markdown-formatted string containing risk assessment points
  */
@@ -102,7 +102,7 @@ export function generateRiskAssessment(stats: BreachStats): string {
 /**
  * Generates security recommendations based on breach statistics
  * Provides actionable steps to improve security
- * 
+ *
  * @param stats - Breach statistics object
  * @returns {string} Markdown-formatted string containing security recommendations
  */

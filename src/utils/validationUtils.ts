@@ -7,7 +7,7 @@ import { ERROR_MESSAGES } from "../constants/errorMessages";
  * - Minimum length of 3 characters
  * - Valid email format if query contains '@'
  * - No spaces allowed in the query
- * 
+ *
  * @param query - The search query string to validate
  * @throws {ValidationError} If any validation check fails
  */
