@@ -1,7 +1,8 @@
 import { Action, ActionPanel, Color, Icon, List } from "@raycast/api";
 import BreachDetail from "./BreachDetails";
 import { ApiResponse } from "../types/breach";
-import { exportToExcel } from "../utils/exportToExcel";
+import { exportToExcel } from "../utils/exportUtils";
+import { BreachStats } from "./BreachStats";
 
 export default function BreachList({
   isLoading,
@@ -58,7 +59,7 @@ export default function BreachList({
               accessories={[
                 {
                   text: breach.password ? "Password Exposed" : "Password Safe",
-                  icon: breach.password 
+                  icon: breach.password
                     ? { source: Icon.ExclamationMark, tintColor: Color.Orange }
                     : { source: Icon.Checkmark, tintColor: Color.Green },
                 },
@@ -78,6 +79,14 @@ export default function BreachList({
                     target={<BreachDetail breach={breach} />}
                     shortcut={{ modifiers: ["cmd"], key: "d" }}
                   />
+                  {data?.result && data.result.length > 0 && (
+                    <Action.Push
+                      title="View Global Statistics"
+                      icon={Icon.LineChart}
+                      target={<BreachStats breaches={data.result} />}
+                      shortcut={{ modifiers: ["cmd"], key: "s" }}
+                    />
+                  )}
                   {breach.password && (
                     <Action.CopyToClipboard
                       title="Copy Exposed Password"

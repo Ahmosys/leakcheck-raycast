@@ -17,9 +17,26 @@ export interface BreachResult {
   fields: string[];
 }
 
+export interface BreachStats {
+  totalBreaches: number;
+  passwordExposed: number;
+  verifiedSources: number;
+  unverifiedSources: number;
+  mostRecentBreach: string | null;
+  compromisedDataTypes: Map<string, number>;
+  timelineData: Map<string, number>;
+  riskLevel: RiskLevel;
+}
+
 export interface ApiResponse {
   success: boolean;
   quota: number;
   found: number;
   result: BreachResult[];
+}
+
+export enum RiskLevel {
+  LOW = "Low Risk",
+  MEDIUM = "Medium Risk",
+  HIGH = "High Risk",
 }

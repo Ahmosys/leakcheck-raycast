@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { List, Icon, LaunchProps } from "@raycast/api";
 import { useFetchBreaches } from "./hooks/useFetchBreaches";
-import { handleError } from "./utils/errors";
-import { validateQuery } from "./utils/validation";
+import { handleError } from "./utils/errosUtils";
+import { validateQuery } from "./utils/validationUtils";
 import BreachList from "./components/BreachList";
 import { Preferences } from "./types/breach";
 import { getPreferenceValues } from "@raycast/api";
