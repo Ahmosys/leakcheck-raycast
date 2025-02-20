@@ -5,7 +5,7 @@ import BreachList from "@/components/BreachList";
 import { useFetchBreaches } from "@/hooks/useFetchBreaches";
 import { handleError } from "@/utils/error";
 import { validateQuery } from "@/utils/validation";
-import { Preferences } from "@/types/breach";
+import { Preferences } from "@/types/api";
 import { ERROR_MESSAGES } from "@/constants/errorMessages";
 
 export default function LookupCommand(props: LaunchProps<{ arguments: Arguments.LookupCommand }>) {

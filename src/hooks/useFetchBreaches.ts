@@ -1,27 +1,36 @@
 import { useFetch } from "@raycast/utils";
-import { ApiResponse } from "@/types/breach";
+import { ApiResponse, SearchQuery } from "@/types/api";
 import { APIError, handleError } from "@/utils/error";
 import { ERROR_MESSAGES } from "@/constants/errorMessages";
 
 /**
  * Custom hook to fetch data breaches for a given email address
- * @param email - The email address to check for breaches
+ * @param query - The email address or username to check for breaches
  * @param apiKey - The API key for authentication
  * @returns Object containing loading state, response data and potential error
  */
-export function useFetchBreaches(email: string, apiKey: string) {
-  const { isLoading, data, error } = useFetch<ApiResponse>(
-    `https://leakcheck.io/api/v2/query/${encodeURIComponent(email)}`,
+export function useFetchBreaches(query: string, apiKey: string) {
+  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(query);
+  
+  const queryInfo: SearchQuery = {
+    value: query,
+    type: isEmail ? 'email' : 'username'
+  };
+
+  const { isLoading, data: rawData, error } = useFetch<ApiResponse>(
+    `https://leakcheck.io/api/v2/query/${encodeURIComponent(query)}`,
     {
       headers: { "X-API-Key": apiKey },
-      execute: !!email,
+      execute: !!query,
       onError: (error: Error & { response?: { status: number } }) => {
         const statusCode = error.response?.status || 500;
         const message = getErrorMessage(statusCode);
         handleError(new APIError(statusCode, message));
       },
-    },
+    }
   );
+
+  const data = rawData ? { ...rawData, query: queryInfo } : undefined;
 
   return { isLoading, data, error };
 }

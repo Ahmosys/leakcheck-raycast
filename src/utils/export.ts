@@ -15,10 +15,11 @@ import { showToast, Toast } from "@raycast/api";
  * - Fields: List of compromised data types
  *
  * @param data - Array of breach results to export
+ * @param searchQuery - The search query used to generate the export
  * @throws Will show error toast if export fails
  * @returns {Promise<void>} Resolves when export is complete
  */
-export async function exportToExcel(data: BreachResult[]): Promise<void> {
+export async function exportToExcel(data: BreachResult[], searchQuery: string): Promise<void> {
   try {
     // Validate input data
     if (!Array.isArray(data) || data.length === 0) {
@@ -30,9 +31,18 @@ export async function exportToExcel(data: BreachResult[]): Promise<void> {
       return;
     }
 
+    // Format current date
+    const date = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+    
+    // Clean search query for filename (remove special characters)
+    const cleanQuery = searchQuery.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+    
+    // Create filename
+    const filename = `leakcheck_${cleanQuery}_${date}.xlsx`;
+    
     // Transform data for Excel format
     const rows = data.map((breach) => ({
-      Email: breach.email || "N/A",
+      "Email/Username": breach.email || breach.username || "N/A",
       Source: breach.source.name || "N/A",
       "Breach Date": breach.source.breach_date || "N/A",
       Password: breach.password || "N/A",
@@ -46,14 +56,14 @@ export async function exportToExcel(data: BreachResult[]): Promise<void> {
     XLSX.utils.book_append_sheet(workbook, worksheet, "Breaches");
 
     // Save to desktop
-    const desktopPath = path.join(os.homedir(), "Desktop", "breaches.xlsx");
+    const desktopPath = path.join(os.homedir(), "Desktop", filename);
     XLSX.writeFile(workbook, desktopPath);
 
     // Show success message
     await showToast({
       style: Toast.Style.Success,
       title: "Export Successful",
-      message: `File saved to your desktop.`,
+      message: `File saved as ${filename}`,
     });
   } catch (error) {
     // Handle export errors

@@ -1,7 +1,9 @@
 import { Action, ActionPanel, Color, Icon, List } from "@raycast/api";
 import BreachDetail from "@/components/BreachDetails";
-import { ApiResponse } from "@/types/breach";
+import { BreachResult } from "@/types/breach";
+import { ApiResponse } from "@/types/api";
 import { exportToExcel } from "@/utils/export";
+import { formatBreachDate } from "@/utils/date";
 import { BreachStats } from "@/components/BreachStats";
 
 export default function BreachList({
@@ -17,12 +19,12 @@ export default function BreachList({
 }) {
   const filteredResults =
     data?.result
-      .filter((breach) => {
+      .filter((breach: BreachResult) => {
         if (filter === "password") return !!breach.password;
         if (filter === "nopassword") return !breach.password;
         return true;
       })
-      .sort((a, b) => {
+      .sort((a: BreachResult, b: BreachResult) => {
         return (b.password ? 1 : 0) - (a.password ? 1 : 0);
       }) || [];
 
@@ -47,11 +49,11 @@ export default function BreachList({
           title={`Found: ${totalResults} Breach${totalResults !== 1 ? "es" : ""}`}
           subtitle={`Quota: ${data.quota || "N/A"} Requests Remaining`}
         >
-          {filteredResults.map((breach, index) => (
+          {filteredResults.map((breach: BreachResult, index: number) => (
             <List.Item
               key={index}
               title={breach.source.name}
-              subtitle={`Breach date: ${breach.source.breach_date || "N/A"}`}
+              subtitle={`Breach date: ${formatBreachDate(breach.source.breach_date)}`}
               icon={{
                 source: breach.password ? Icon.Eye : Icon.EyeDisabled,
                 tintColor: breach.password ? Color.Orange : Color.SecondaryText,
@@ -98,7 +100,7 @@ export default function BreachList({
                   <Action
                     title="Export Results to Excel"
                     icon={Icon.Download}
-                    onAction={() => exportToExcel(data?.result || [])}
+                    onAction={() => exportToExcel(data?.result || [], data?.query.value)}
                     shortcut={{ modifiers: ["cmd"], key: "e" }}
                   />
                 </ActionPanel>

@@ -9,6 +9,7 @@ export interface BreachSource {
 export interface BreachResult {
   password?: string;
   source: BreachSource;
-  email: string;
+  email?: string;
+  username?: string;
   fields: string[];
 } 

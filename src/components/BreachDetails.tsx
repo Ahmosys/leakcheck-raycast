@@ -1,5 +1,6 @@
 import { Action, ActionPanel, Color, Detail, Icon } from "@raycast/api";
 import { BreachResult } from "@/types/breach";
+import { formatBreachDate } from "@/utils/date";
 
 export default function BreachDetail({ breach }: { breach: BreachResult }) {
   return (
@@ -24,11 +25,13 @@ export default function BreachDetail({ breach }: { breach: BreachResult }) {
 
           {breach.email && <Detail.Metadata.Label title="Email" text={breach.email} icon={Icon.Envelope} />}
 
+          {breach.username && <Detail.Metadata.Label title="Username" text={breach.username} icon={Icon.Person} />}
+
           {breach.password && <Detail.Metadata.Label title="Password" text={breach.password} icon={Icon.Key} />}
 
           <Detail.Metadata.Label
             title="Breach Date"
-            text={breach.source.breach_date || "Unknown"}
+            text={formatBreachDate(breach.source.breach_date)}
             icon={Icon.Calendar}
           />
 
@@ -105,7 +108,7 @@ ${compromisedData}
 ---
 
 ### ℹ️ Additional Information
-- **Breach Date**: ${breach.source.breach_date || "Unknown"}
+- **Breach Date**: ${formatBreachDate(breach.source.breach_date)}
 - **Source Type**: ${sourceType}
 
 > 🔒 **Security Reminder**: Always use unique, strong passwords and enable two-factor authentication when possible.
