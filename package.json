@@ -40,7 +40,7 @@
       "name": "monitorMenuBarCommand",
       "title": "Menu Bar Monitor",
       "subtitle": "Leakcheck API",
-      "description": "Monitor data breaches from menu bar",
+      "description": "Monitor data breaches from menu bar.",
       "mode": "menu-bar",
       "interval": "1h",
       "preferences": [

@@ -32,7 +32,8 @@ export default function MenuBarCommand() {
 
   return (
     <MenuBarExtra
-      icon={totalBreaches > 0 ? Icon.Lock : Icon.LockUnlocked}
+      icon={totalBreaches > 0 ? Icon.LockUnlocked : Icon.Lock}
+      title={`${totalBreaches} breaches`}
       tooltip={`Leakcheck - ${totalBreaches} breaches detected`}
       isLoading={isLoading}
     >
