@@ -42,7 +42,7 @@
       "subtitle": "Leakcheck API",
       "description": "Monitor data breaches from menu bar.",
       "mode": "menu-bar",
-      "interval": "1h",
+      "interval": "3h",
       "preferences": [
         {
           "name": "apiKey",
