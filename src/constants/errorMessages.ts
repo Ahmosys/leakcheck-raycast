@@ -11,36 +11,36 @@ export const ERROR_MESSAGES = {
    */
   VALIDATION: {
     /** Error when input length is less than 3 characters */
-    MIN_LENGTH: "Please enter a valid email or username (minimum 3 characters).",
+    MIN_LENGTH: "Please enter at least 3 characters",
     /** Error when email format is invalid */
-    INVALID_EMAIL: "Please enter a valid email address.",
+    INVALID_EMAIL: "Please enter a valid email address (e.g., user@domain.com)",
     /** Error when input contains spaces */
-    NO_SPACES: "Please enter a valid email or username (no spaces allowed).",
+    NO_SPACES: "Email or username cannot contain spaces",
   },
   /**
    * API-related error messages
    */
   API: {
     /** Authentication error - invalid or missing API key */
-    UNAUTHORIZED: "Please check your API key in the preferences.",
+    UNAUTHORIZED: "Invalid API key. Please check your API key in preferences",
     /** Rate limiting error */
-    RATE_LIMIT: "Please wait before making other searches.",
+    RATE_LIMIT: "Too many requests. Please try again later",
     /** Authorization error - subscription or limit issues */
-    FORBIDDEN: "Please check your subscription status or limits.",
+    FORBIDDEN: "Access denied. Please check your subscription status",
     /** Invalid search parameters or format */
-    INVALID_SEARCH: "Unable to determine search type.",
+    INVALID_SEARCH: "Invalid search parameters",
     /** Generic API error */
-    UNKNOWN: "An unexpected error occurred.",
+    UNKNOWN: "An unexpected error occurred. Please try again",
   },
   /**
    * UI-related error messages
    */
   UI: {
     /** Generic error title for data fetching issues */
-    ERROR_TITLE: "Error fetching data",
+    ERROR_TITLE: "Error",
     /** Invalid user input error title */
-    INVALID_INPUT: "Invalid input",
+    INVALID_INPUT: "Invalid Input",
     /** Generic error title for unexpected issues */
-    UNEXPECTED_ERROR: "An unexpected error occurred",
+    UNEXPECTED_ERROR: "Unexpected Error",
   },
 } as const;

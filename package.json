@@ -15,13 +15,13 @@
       "name": "lookupCommand",
       "title": "Lookup Data Breach",
       "subtitle": "Leakcheck API",
-      "description": "Query data breaches for a given email or username.",
+      "description": "Search for compromised credentials in data breaches using email or username",
       "mode": "view",
       "arguments": [
         {
           "name": "query",
           "type": "text",
-          "placeholder": "Enter email or username",
+          "placeholder": "Enter an email (user@domain.com) or username",
           "required": true
         }
       ],
@@ -30,8 +30,8 @@
           "name": "apiKey",
           "type": "password",
           "title": "Leakcheck API Key",
-          "description": "Your LeakCheck API key",
-          "placeholder": "c8dfc24c48c87f6eaad2e23c4da02949ddf21c9d",
+          "description": "Your Leakcheck API key for authentication. Get one at leakcheck.io",
+          "placeholder": "Enter your Leakcheck API key here",
           "required": true
         }
       ]
@@ -40,7 +40,7 @@
       "name": "monitorMenuBarCommand",
       "title": "Menu Bar Monitor",
       "subtitle": "Leakcheck API",
-      "description": "Monitor data breaches from menu bar.",
+      "description": "Continuously monitor an email address for new data breaches with menu bar notifications",
       "mode": "menu-bar",
       "interval": "3h",
       "preferences": [
@@ -48,15 +48,16 @@
           "name": "apiKey",
           "type": "password",
           "title": "Leakcheck API Key",
-          "description": "Your LeakCheck API key",
-          "placeholder": "c8dfc24c48c87f6eaad2e23c4da02949ddf21c9d",
+          "description": "Your Leakcheck API key for authentication. Get one at leakcheck.io",
+          "placeholder": "Enter your Leakcheck API key here",
           "required": true
         },
         {
           "name": "monitoredEmail",
           "type": "textfield",
           "title": "Email to Monitor",
-          "description": "Email address to monitor for breaches",
+          "description": "The email address you want to continuously monitor for new data breaches",
+          "placeholder": "user@domain.com",
           "required": true
         }
       ]
