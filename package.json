@@ -35,6 +35,31 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "monitorMenuBarCommand",
+      "title": "Menu Bar Monitor",
+      "subtitle": "Leakcheck API",
+      "description": "Monitor data breaches from menu bar",
+      "mode": "menu-bar",
+      "interval": "1h",
+      "preferences": [
+        {
+          "name": "apiKey",
+          "type": "password",
+          "title": "Leakcheck API Key",
+          "description": "Your LeakCheck API key",
+          "placeholder": "c8dfc24c48c87f6eaad2e23c4da02949ddf21c9d",
+          "required": true
+        },
+        {
+          "name": "monitoredEmail",
+          "type": "textfield",
+          "title": "Email to Monitor",
+          "description": "Email address to monitor for breaches",
+          "required": true
+        }
+      ]
     }
   ],
   "dependencies": {

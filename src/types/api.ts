@@ -15,4 +15,5 @@ export interface ApiResponse {
 
 export interface Preferences {
   apiKey: string;
+  monitoredEmail?: string;
 } 
