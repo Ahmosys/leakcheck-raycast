@@ -2,7 +2,7 @@ import { BreachResult } from "@/types/breach";
 
 export interface SearchQuery {
   value: string;
-  type: 'email' | 'username';
+  type: "email" | "username";
 }
 
 export interface ApiResponse {
@@ -16,4 +16,4 @@ export interface ApiResponse {
 export interface Preferences {
   apiKey: string;
   monitoredEmail?: string;
-} 
+}

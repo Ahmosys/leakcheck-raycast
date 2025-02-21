@@ -11,24 +11,25 @@ import { ERROR_MESSAGES } from "@/constants/errorMessages";
  */
 export function useFetchBreaches(query: string, apiKey: string) {
   const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(query);
-  
+
   const queryInfo: SearchQuery = {
     value: query,
-    type: isEmail ? 'email' : 'username'
+    type: isEmail ? "email" : "username",
   };
 
-  const { isLoading, data: rawData, error } = useFetch<ApiResponse>(
-    `https://leakcheck.io/api/v2/query/${encodeURIComponent(query)}`,
-    {
-      headers: { "X-API-Key": apiKey },
-      execute: !!query,
-      onError: (error: Error & { response?: { status: number } }) => {
-        const statusCode = error.response?.status || 500;
-        const message = getErrorMessage(statusCode);
-        handleError(new APIError(statusCode, message));
-      },
-    }
-  );
+  const {
+    isLoading,
+    data: rawData,
+    error,
+  } = useFetch<ApiResponse>(`https://leakcheck.io/api/v2/query/${encodeURIComponent(query)}`, {
+    headers: { "X-API-Key": apiKey },
+    execute: !!query,
+    onError: (error: Error & { response?: { status: number } }) => {
+      const statusCode = error.response?.status || 500;
+      const message = getErrorMessage(statusCode);
+      handleError(new APIError(statusCode, message));
+    },
+  });
 
   const data = rawData ? { ...rawData, query: queryInfo } : undefined;
 

@@ -6,8 +6,8 @@
 
 
 <p align="">
-  <img src="https://i.ibb.co/CsTNRKnm/leakcheck-2025-02-19-at-00-05-11.png" alt="Leakcheck" width="45%">
-  <img src="https://i.ibb.co/9HHxs0Tt/leakcheck-1.png" alt="Leakcheck2" width="45%">
+  <img src="./metadata/screenshot-1.png" alt="Leakcheck" width="45%">
+  <img src="./metadata/screenshot-2.png" alt="Leakcheck2" width="45%">
 </p>
 
 

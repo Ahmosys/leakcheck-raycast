@@ -2,6 +2,7 @@ import { Detail, Icon, Color } from "@raycast/api";
 import { BreachResult } from "@/types/breach";
 import type { BreachStats } from "@/types/breach";
 import { useBreachStats } from "@/hooks/useBreachStats";
+import { formatBreachDate } from "@/utils/date";
 import {
   generateTimelineChart,
   generateDataTypesChart,
@@ -41,7 +42,7 @@ export function BreachStats({ breaches }: { breaches: BreachResult[] }) {
 
           <Detail.Metadata.Label
             title="Most Recent Breach"
-            text={stats.mostRecentBreach || "Unknown"}
+            text={formatBreachDate(stats.mostRecentBreach) || "Unknown"}
             icon={Icon.Calendar}
           />
 

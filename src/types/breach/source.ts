@@ -12,4 +12,4 @@ export interface BreachResult {
   email?: string;
   username?: string;
   fields: string[];
-} 
+}

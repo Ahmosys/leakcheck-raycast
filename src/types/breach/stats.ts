@@ -1,4 +1,4 @@
-import { RiskLevel } from './enums';
+import { RiskLevel } from "./enums";
 
 export interface BreachStats {
   totalBreaches: number;
@@ -9,4 +9,4 @@ export interface BreachStats {
   compromisedDataTypes: Map<string, number>;
   timelineData: Map<string, number>;
   riskLevel: RiskLevel;
-} 
+}

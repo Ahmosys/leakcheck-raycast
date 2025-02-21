@@ -32,14 +32,14 @@ export async function exportToExcel(data: BreachResult[], searchQuery: string): 
     }
 
     // Format current date
-    const date = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
-    
+    const date = new Date().toISOString().split("T")[0]; // Format: YYYY-MM-DD
+
     // Clean search query for filename (remove special characters)
-    const cleanQuery = searchQuery.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
-    
+    const cleanQuery = searchQuery.replace(/[^a-zA-Z0-9]/g, "_").toLowerCase();
+
     // Create filename
     const filename = `leakcheck_${cleanQuery}_${date}.xlsx`;
-    
+
     // Transform data for Excel format
     const rows = data.map((breach) => ({
       "Email/Username": breach.email || breach.username || "N/A",

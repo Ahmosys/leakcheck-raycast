@@ -5,7 +5,7 @@ import { formatBreachDate } from "@/utils/date";
 
 export default function MenuBarCommand() {
   const preferences = getPreferenceValues<Preferences>();
-  
+
   if (!preferences.monitoredEmail) {
     showToast({
       style: Toast.Style.Failure,
@@ -38,11 +38,7 @@ export default function MenuBarCommand() {
       isLoading={isLoading}
     >
       <MenuBarExtra.Section title={`Monitoring ${preferences.monitoredEmail}`}>
-        <MenuBarExtra.Item
-          title={`${totalBreaches} Breaches Found`}
-          icon={Icon.List}
-          onAction={() => {}}
-        />
+        <MenuBarExtra.Item title={`${totalBreaches} Breaches Found`} icon={Icon.List} onAction={() => {}} />
       </MenuBarExtra.Section>
 
       {breachesWithPasswords.length > 0 && (
@@ -74,4 +70,4 @@ export default function MenuBarCommand() {
       )}
     </MenuBarExtra>
   );
-} 
+}

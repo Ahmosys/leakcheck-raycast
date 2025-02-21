@@ -5,12 +5,12 @@
  */
 export function formatBreachDate(dateStr: string | null | undefined): string {
   if (!dateStr) return "Unknown";
-  
+
   const [year, month] = dateStr.split("-");
   const date = new Date(parseInt(year), parseInt(month) - 1);
-  
-  return date.toLocaleDateString(undefined, { 
-    year: 'numeric',
-    month: 'long'
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
   });
-} 
+}
