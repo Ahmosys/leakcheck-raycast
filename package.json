@@ -3,7 +3,7 @@
   "name": "leakcheck",
   "title": "Leakcheck",
   "description": "Query LeakCheck API for searching data breaches.",
-  "icon": "extension_icon.png",
+  "icon": "extension-icon.png",
   "author": "ahmosys",
   "categories": [
     "Security",
@@ -21,7 +21,7 @@
         {
           "name": "query",
           "type": "text",
-          "placeholder": "Enter an email (user@domain.com) or username",
+          "placeholder": "Enter an email or username",
           "required": true
         }
       ],
