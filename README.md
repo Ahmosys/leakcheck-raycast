@@ -6,9 +6,11 @@
 
 
 <p align="">
-  <img src="./metadata/screenshot-1.png" alt="Leakcheck" width="45%">
-  <img src="./metadata/screenshot-2.png" alt="Leakcheck2" width="45%">
+  <img src="metadata/leakcheck-1.png" alt="Leakcheck" width="33%">
+  <img src="metadata/leakcheck-2.png" alt="Leakcheck2" width="33%">
+  <img src="metadata/leakcheck-3.png" alt="Leakcheck2" width="33%">
 </p>
+
 
 
 ## 📋 Description
