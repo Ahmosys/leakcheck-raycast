@@ -6,9 +6,9 @@
 
 
 <div align="center">
-  <img src="metadata/leakcheck-1.png" alt="Leakcheck" width="30%">
-  <img src="metadata/leakcheck-2.png" alt="Leakcheck2" width="30%">
-  <img src="metadata/leakcheck-3.png" alt="Leakcheck3" width="30%">
+  <img src="metadata/leakcheck-1.png" alt="Leakcheck" width="33%">
+  <img src="metadata/leakcheck-2.png" alt="Leakcheck2" width="33%">
+  <img src="metadata/leakcheck-3.png" alt="Leakcheck3" width="33%">
 </div>
 
 
