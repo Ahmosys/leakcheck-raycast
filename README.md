@@ -5,11 +5,12 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/ahmosys/leakcheck-raycast) ![GitHub issues](https://img.shields.io/github/issues/ahmosys/leakcheck-raycast)
 
 
-<p align="">
-  <img src="metadata/leakcheck-1.png" alt="Leakcheck" width="33%">
-  <img src="metadata/leakcheck-2.png" alt="Leakcheck2" width="33%">
-  <img src="metadata/leakcheck-3.png" alt="Leakcheck2" width="33%">
-</p>
+<div align="center">
+  <img src="metadata/leakcheck-1.png" alt="Leakcheck" width="30%">
+  <img src="metadata/leakcheck-2.png" alt="Leakcheck2" width="30%">
+  <img src="metadata/leakcheck-3.png" alt="Leakcheck3" width="30%">
+</div>
+
 
 
 
