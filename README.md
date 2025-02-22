@@ -57,7 +57,7 @@ Leakcheck is a Raycast extension that allows you to search and monitor data brea
 
 ### Available Commands
 
-- `Lookup Data Breach`: Search for data breaches by email or username
+- `Lookup Data Breach`: Command to search for data breaches by email or username
 - `Menu Bar Monitor`: Menu bar command to monitor your email for potential breaches
 
 
