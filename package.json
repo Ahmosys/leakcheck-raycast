@@ -9,6 +9,7 @@
     "Security",
     "Data"
   ],
+  "keywords": ["security", "data-breach", "monitoring", "leakcheck"],
   "license": "MIT",
   "commands": [
     {
