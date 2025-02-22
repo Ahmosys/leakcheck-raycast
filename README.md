@@ -22,7 +22,7 @@
 
 ## 🚀 About
 
-Leakcheck is a Raycast extension that allows you to search and monitor data breaches through the [Leakcheck API](https://wiki.leakcheck.io). It provides an intuitive interface to check if your credentials have been compromised in data breaches.
+Leakcheck is a Raycast extension that allows you to search and monitor data breaches through the [Leakcheck API](https://leakcheck.io/). It provides an intuitive interface to check if your credentials have been compromised in data breaches.
 
 ## ✨ Features
 
@@ -44,8 +44,8 @@ Leakcheck is a Raycast extension that allows you to search and monitor data brea
 ## 📥 Installation
 
 1. Make sure you have [Raycast](https://www.raycast.com) installed
-2. Open Raycast and search for "Leakcheck"
-3. Click "Install"
+2. Open Raycast Store and search for "Leakcheck"
+3. Install the extension
 
 ## ⚙️ Configuration
 
@@ -57,8 +57,8 @@ Leakcheck is a Raycast extension that allows you to search and monitor data brea
 
 ### Available Commands
 
-- `Lookup Data Breach`: Search for data breaches
-- `Menu Bar Monitor`: Continuously monitor an email
+- `Lookup Data Breach`: Search for data breaches by email or username
+- `Menu Bar Monitor`: Menu bar command to monitor your email for potential breaches
 
 
 ## 🔒 Privacy & Security
